@@ -7,7 +7,8 @@ ns_tasks = api.namespace('tasks', description='All tasks regarding tasks')
 # models
 a_task_model = api.model('Task', {
     'title': fields.String(),
-    'description': fields.String()
+    'description': fields.String(),
+    'user_id' : fields.Integer()
 })
 
 
@@ -21,7 +22,7 @@ class TasksList(Resource):
     def post(self):
         """ use this endpoint to add new tasks """
         data = api.payload
-        task = TaskModel(title=data['title'], description=data['description'])
+        task = TaskModel(**data)
         record = task.create_record();
         return task_schema.dump(record), 201
 

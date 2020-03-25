@@ -36,7 +36,7 @@ class TaskModel(db.Model):
 
 class TaskSchema(ma.Schema):
     class Meta:
-        fields = ("_id", "title", "description", "created_at", "user_id")
+        fields = ("_id", "title", "description", "created_at", "user_id", "created_at")
 
 
 task_schema = TaskSchema()
